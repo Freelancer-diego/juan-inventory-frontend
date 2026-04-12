@@ -1,0 +1,145 @@
+.sales-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sales-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sales-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.sales-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sale-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.sale-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.sale-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.sale-header h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.status-badge.success {
+    background: #4caf50;
+    color: white;
+}
+
+.status-badge.warning {
+    background: #ff9800;
+    color: white;
+}
+
+.status-badge.danger {
+    background: #f44336;
+    color: white;
+}
+
+.sale-total {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.sale-items {
+    margin-bottom: 1.5rem;
+}
+
+.sale-items h4 {
+    margin: 0 0 1rem 0;
+    color: #666;
+    font-size: 1rem;
+}
+
+.sale-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.item-subtotal {
+    font-weight: 700;
+    color: #667eea;
+    text-align: right;
+}
+
+.sale-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.25rem;
+    color: #666;
+}
+
+.error {
+    color: #f44336;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state h2 {
+    color: #333;
+    margin: 0 0 0.5rem 0;
+}
+
+.empty-state p {
+    color: #666;
+    margin: 0;
+}
