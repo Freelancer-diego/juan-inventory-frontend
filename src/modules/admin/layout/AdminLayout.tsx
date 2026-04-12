@@ -29,7 +29,7 @@ export const AdminLayout = () => {
                 <Menu size={24} />
             </button>
             <div className="flex flex-col">
-                <span className="font-bold text-slate-900 leading-tight">Stockly</span>
+                <span className="font-bold text-slate-900 leading-tight">Corrales</span>
                 <span className="text-xs text-slate-500">Panel de Administración</span>
             </div>
         </div>

@@ -33,7 +33,7 @@ export const ShopHeader = () => {
                         </button>
                         <Link to="/" className="flex items-center gap-1 group">
                              <div className="font-extrabold text-2xl tracking-tighter text-slate-900 group-hover:opacity-80 transition-opacity">
-                                TIENDA
+                                TIENDA CORRALES
                                 <span className="text-blue-600">.</span>
                              </div>
                         </Link>

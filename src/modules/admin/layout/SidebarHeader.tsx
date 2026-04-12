@@ -7,7 +7,7 @@ export const SidebarHeader = () => {
                 <Store size={24} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="flex flex-col">
-                <span className="text-lg font-bold text-white leading-none tracking-tight">Stockly</span>
+                <span className="text-lg font-bold text-white leading-none tracking-tight">TiendaCorrales</span>
                 <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider mt-1">Admin Panel</span>
             </div>
         </div>

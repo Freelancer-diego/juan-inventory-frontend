@@ -20,7 +20,7 @@ export const generateWhatsAppLink = (
         .join('\n');
 
     const message = [
-        `🛍️ *Nuevo Pedido — Stockly*`,
+        `🛍️ *Nuevo Pedido — Tienda Corrales*`,
         ``,
         `👤 *${customer.name}*`,
         `📱 ${customer.phone}`,
