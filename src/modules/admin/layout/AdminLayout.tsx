@@ -7,12 +7,12 @@ import { Menu } from 'lucide-react';
 import { useState } from 'react';
 
 export const AdminLayout = () => {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const { isAuthenticated, mustChangePassword } = useAuthStore();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
-  }
+  if (!isAuthenticated) return <Navigate to="/admin/login" replace />;
+  if (mustChangePassword) return <Navigate to="/admin/change-password" replace />;
+
 
   return (
     <div className="min-h-screen bg-slate-50 flex">

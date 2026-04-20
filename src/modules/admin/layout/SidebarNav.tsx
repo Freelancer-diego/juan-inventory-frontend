@@ -1,4 +1,4 @@
-import { LayoutDashboard, Package, Tag } from 'lucide-react';
+import { LayoutDashboard, Package, Tag, Users } from 'lucide-react';
 import { SidebarItem } from './SidebarItem';
 
 interface SidebarNavProps {
@@ -10,6 +10,7 @@ export const SidebarNav = ({ onItemClick }: SidebarNavProps) => {
         { icon: LayoutDashboard, label: 'Dashboard', to: '/admin/dashboard' },
         { icon: Package, label: 'Productos', to: '/admin/products' },
         { icon: Tag, label: 'Ventas', to: '/admin/sales' },
+        { icon: Users, label: 'Usuarios', to: '/admin/users' },
     ];
 
     return (

@@ -9,7 +9,7 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
 
@@ -19,18 +19,22 @@ export const Login = () => {
     setLoading(true);
 
     try {
-      
-      const response = await api.post('/admin/login', { email, password });
-      // Assuming backend returns { access_token: '...' }
-      if (response.data && response.data.access_token) {
-        login(response.data.access_token);
-        navigate('/admin/dashboard');
-      } else {
-         setError('Invalid response from server');
+      const { data } = await api.post<{ access_token: string; must_change_password?: boolean }>(
+        '/admin/login',
+        { email, password },
+      );
+
+      if (!data.access_token) {
+        setError('Respuesta inválida del servidor');
+        return;
       }
-    } catch (err: any) {
-      console.error('Login failed', err);
-      setError('Invalid credentials');
+
+      const mustChangePassword = data.must_change_password === true;
+      login(data.access_token, mustChangePassword);
+
+      navigate(mustChangePassword ? '/admin/change-password' : '/admin/dashboard', { replace: true });
+    } catch {
+      setError('Correo o contraseña incorrectos');
     } finally {
       setLoading(false);
     }
@@ -40,15 +44,15 @@ export const Login = () => {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#f8fafc' }}>
       <div className="card" style={{ width: '100%', maxWidth: '400px' }}>
         <h2 style={{ marginBottom: '1.5rem', textAlign: 'center', color: '#0f172a' }}>Admin Portal</h2>
-        
+
         {error && (
-          <div style={{ 
-            background: '#fee2e2', 
-            color: '#991b1b', 
-            padding: '0.75rem', 
-            borderRadius: '0.375rem', 
+          <div style={{
+            background: '#fee2e2',
+            color: '#991b1b',
+            padding: '0.75rem',
+            borderRadius: '0.375rem',
             marginBottom: '1rem',
-            border: '1px solid #fca5a5'
+            border: '1px solid #fca5a5',
           }}>
             {error}
           </div>
@@ -57,20 +61,20 @@ export const Login = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label">Email</label>
-            <input 
-              type="email" 
+            <input
+              type="email"
               className="form-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={loading}
-              placeholder="admin@example.com"
+              placeholder="correo@ejemplo.com"
             />
           </div>
           <div className="form-group">
-            <label className="form-label">Password</label>
-            <input 
-              type="password" 
+            <label className="form-label">Contraseña</label>
+            <input
+              type="password"
               className="form-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -79,17 +83,16 @@ export const Login = () => {
               placeholder="••••••••"
             />
           </div>
-          <button 
-            type="submit" 
-            className="btn btn-primary" 
+          <button
+            type="submit"
+            className="btn btn-primary"
             style={{ width: '100%', marginTop: '0.5rem' }}
             disabled={loading}
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
           </button>
         </form>
       </div>
     </div>
   );
 };
-

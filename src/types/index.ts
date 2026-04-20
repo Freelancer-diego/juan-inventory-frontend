@@ -1,3 +1,17 @@
+export const UserRole = {
+  ADMIN: 'ADMIN',
+} as const;
+
+export type UserRole = typeof UserRole[keyof typeof UserRole];
+
+export interface User {
+  id: string;
+  name?: string;
+  email: string;
+  role: UserRole;
+  mustChangePassword: boolean;
+}
+
 export interface Product {
   id: string;
   name: string;
